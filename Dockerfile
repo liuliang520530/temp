@@ -8,11 +8,9 @@ RUN apk add --no-cache zip libzip-dev libpng-dev libjpeg-turbo-dev freetype-dev 
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure zip && \
     docker-php-ext-install zip gd pdo_mysql && \
-    chmod +x /opt/startPHP && \
     chmod -R 755 /opt/maccms10 && \
     mkdir -p /run/mysqld && \
     mkdir /opt/data && \
-    mv /opt/startPHP /bin && \
     mv /opt/my.cnf /etc/my.cnf && \
     rm /etc/my.cnf.d/mariadb-server.cnf && \
     rm -rf /var/lib/mysql && \
@@ -29,4 +27,4 @@ RUN apk add --no-cache zip libzip-dev libpng-dev libjpeg-turbo-dev freetype-dev 
 WORKDIR /opt/maccms10
 EXPOSE 7878 
 
-CMD [ "startPHP" ]
+CMD [ "php start" ]
