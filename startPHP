@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! -d "/data/mysql/maccms10" ]; then
+  cp -r -u /opt/data/upload /data
+  cp -r -u /opt/data/mysql /data
+  cp -r -u /opt/data/extra /data
+  cp -r -u /opt/data/player /data
+fi
+
+exec /usr/bin/mysqld --user=root &
+php -S 0.0.0.0:7878 >/dev/null 2>&1
